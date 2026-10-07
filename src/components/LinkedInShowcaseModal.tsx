@@ -38,7 +38,7 @@ Principais capacidades de engenharia implementadas:
 - Arquitetura Modular & Clean Code
 
 Confira o código-fonte completo no GitHub e teste a demonstração interativa:
-👉 GitHub: [Seu link do repositório aqui]
+👉 GitHub: https://github.com/VictorFonseca-01/PulseOps-Plataforma-de-Observabilidade-e-Monitoramento-de-APIs-em-Tempo-Real
 
 Feedback de engenheiros de software, SREs e tech leads são super bem-vindos! 💬
 
@@ -66,10 +66,10 @@ Feedback de engenheiros de software, SREs e tech leads são super bem-vindos! �
 
 \`\`\`bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/pulseops-observability.git
+git clone https://github.com/VictorFonseca-01/PulseOps-Plataforma-de-Observabilidade-e-Monitoramento-de-APIs-em-Tempo-Real.git
 
 # 2. Acesse a pasta
-cd devpulse-observability
+cd PulseOps-Plataforma-de-Observabilidade-e-Monitoramento-de-APIs-em-Tempo-Real
 
 # 3. Instale as dependências
 npm install

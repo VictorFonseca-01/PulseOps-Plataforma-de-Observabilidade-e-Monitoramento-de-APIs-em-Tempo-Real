@@ -89,10 +89,10 @@ graph TD
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/pulseops-observability.git
+git clone https://github.com/VictorFonseca-01/PulseOps-Plataforma-de-Observabilidade-e-Monitoramento-de-APIs-em-Tempo-Real.git
 
 # 2. Acesse a pasta do projeto
-cd pulseops-observability
+cd PulseOps-Plataforma-de-Observabilidade-e-Monitoramento-de-APIs-em-Tempo-Real
 
 # 3. Instale as dependências
 npm install
