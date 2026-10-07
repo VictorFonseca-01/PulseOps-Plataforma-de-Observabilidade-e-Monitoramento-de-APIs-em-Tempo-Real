@@ -19,7 +19,7 @@ export const LinkedInShowcaseModal: FC<LinkedInShowcaseModalProps> = ({ isOpen, 
 
   if (!isOpen) return null;
 
-  const linkedInText = `🚀 Apresento o DevPulse | Plataforma de Observabilidade Cloud & Telemetria em Tempo Real!
+  const linkedInText = `🚀 Apresento o PulseOps | Plataforma de Observabilidade e Monitoramento de APIs em Tempo Real!
 
 Construí este projeto focado em resolver um dos maiores desafios em sistemas distribuídos de alta escala: visibilidade completa de latência, saúde de contratos de API e gestão proativa de incidentes.
 
@@ -44,7 +44,7 @@ Feedback de engenheiros de software, SREs e tech leads são super bem-vindos! �
 
 #reactjs #typescript #observability #softwareengineering #sre #frontend #devops #webdevelopment #portfolio`;
 
-  const readmeSnippet = `# ⚡ DevPulse — Cloud Observability & Telemetry Platform
+  const readmeSnippet = `# ⚡ PulseOps — Plataforma de Observabilidade e Monitoramento de APIs em Tempo Real
 
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)](https://www.typescriptlang.org/)
@@ -66,7 +66,7 @@ Feedback de engenheiros de software, SREs e tech leads são super bem-vindos! �
 
 \`\`\`bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/devpulse-observability.git
+git clone https://github.com/seu-usuario/pulseops-observability.git
 
 # 2. Acesse a pasta
 cd devpulse-observability

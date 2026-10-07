@@ -47,14 +47,14 @@ export const Header: FC<HeaderProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-lg tracking-tight font-['Syne'] text-white">
-                  Dev<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Pulse</span>
+                  Pulse<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Ops</span>
                 </span>
                 <span className="px-2 py-0.5 text-[10px] font-semibold tracking-wider uppercase rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
                   v2.4 Core
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 hidden sm:block">
-                High-Frequency Observability & API Telemetry
+                Observabilidade & Monitoramento de APIs em Tempo Real
               </p>
             </div>
           </div>

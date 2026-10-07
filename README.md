@@ -1,4 +1,4 @@
-# ⚡ DevPulse — Cloud Observability & Telemetry Engine
+# ⚡ PulseOps — Plataforma de Observabilidade e Monitoramento de APIs em Tempo Real
 
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -6,7 +6,7 @@
 [![Status](https://img.shields.io/badge/Status-Production--Ready-emerald)](https://github.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-> **DevPulse** é uma plataforma moderna e reativa de observabilidade e telemetria voltada para sistemas distribuídos de alta escala, monitoramento contínuo de contratos de APIs, análise percentil de latência (p50, p95, p99) e gestão proativa de incidentes (SRE).
+> **PulseOps** é uma plataforma moderna e de alta performance de observabilidade e monitoramento voltada para sistemas distribuídos, contratos de APIs, análise percentil de latência (p50, p95, p99) e gestão proativa de incidentes (SRE).
 
 ---
 
@@ -89,10 +89,10 @@ graph TD
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/devpulse-observability.git
+git clone https://github.com/seu-usuario/pulseops-observability.git
 
 # 2. Acesse a pasta do projeto
-cd devpulse-observability
+cd pulseops-observability
 
 # 3. Instale as dependências
 npm install

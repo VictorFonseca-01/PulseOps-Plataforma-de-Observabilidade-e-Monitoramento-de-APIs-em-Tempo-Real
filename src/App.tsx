@@ -285,7 +285,7 @@ export function App() {
       <footer className="border-t border-white/5 bg-[#030408] py-6 px-4 text-xs text-slate-500">
         <div className="max-w-[1600px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-slate-300 font-['Syne']">DevPulse Observability Engine</span>
+            <span className="font-bold text-slate-300 font-['Syne']">PulseOps Platform</span>
             <span>•</span>
             <span>Desenvolvido para portfólio profissional (GitHub & LinkedIn)</span>
           </div>
