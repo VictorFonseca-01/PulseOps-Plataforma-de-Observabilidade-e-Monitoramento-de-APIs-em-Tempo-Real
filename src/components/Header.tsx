@@ -60,25 +60,25 @@ export const Header: FC<HeaderProps> = ({
             </div>
           </div>
 
-          {/* Navigation Tabs */}
-          <nav className="hidden md:flex items-center gap-1 p-1 bg-white/[0.03] border border-white/10 rounded-xl">
+          {/* Navigation Tabs - Clean Linear/Vercel Style */}
+          <nav className="hidden md:flex items-center gap-1 p-1 bg-slate-900/60 border border-white/5 rounded-xl">
             <button
               onClick={() => setActiveTab('dashboard')}
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 activeTab === 'dashboard'
-                  ? 'bg-indigo-600/30 text-white border border-indigo-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
+                  ? 'bg-slate-800 text-white border border-slate-700/80 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]'
               }`}
             >
               <Zap className="w-3.5 h-3.5 text-indigo-400" />
-              Painel Principal
+              Painel
             </button>
             <button
               onClick={() => setActiveTab('topology')}
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 activeTab === 'topology'
-                  ? 'bg-indigo-600/30 text-white border border-indigo-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
+                  ? 'bg-slate-800 text-white border border-slate-700/80 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]'
               }`}
             >
               <Globe className="w-3.5 h-3.5 text-cyan-400" />
@@ -86,46 +86,43 @@ export const Header: FC<HeaderProps> = ({
             </button>
             <button
               onClick={() => setActiveTab('logs')}
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 activeTab === 'logs'
-                  ? 'bg-indigo-600/30 text-white border border-indigo-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
+                  ? 'bg-slate-800 text-white border border-slate-700/80 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]'
               }`}
             >
               <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-              Live Logs
+              Logs
             </button>
             <button
               onClick={() => setActiveTab('incidents')}
-              className={`relative flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`relative flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 activeTab === 'incidents'
-                  ? 'bg-indigo-600/30 text-white border border-indigo-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
+                  ? 'bg-slate-800 text-white border border-slate-700/80 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.03]'
               }`}
             >
               <Flame className="w-3.5 h-3.5 text-rose-400" />
               Incidentes
               {activeIncidentsCount > 0 && (
-                <span className="w-4 h-4 text-[10px] font-bold rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center justify-center">
+                <span className="w-4 h-4 text-[10px] font-bold rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center justify-center">
                   {activeIncidentsCount}
                 </span>
               )}
             </button>
 
-            {/* Nova Aba de Triagem IA Laya */}
+            {/* Aba de Triagem IA Laya */}
             <button
               onClick={() => setActiveTab('laya')}
-              className={`relative flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`relative flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 activeTab === 'laya'
-                  ? 'bg-purple-600/30 text-purple-200 border border-purple-500/50 shadow-md shadow-purple-500/20'
-                  : 'text-purple-300/80 hover:text-purple-100 hover:bg-purple-500/10'
+                  ? 'bg-purple-950/50 text-purple-200 border border-purple-500/40 shadow-sm'
+                  : 'text-slate-400 hover:text-purple-300 hover:bg-purple-950/20'
               }`}
             >
-              <Bot className="w-3.5 h-3.5 text-purple-400 animate-pulse" />
+              <Bot className="w-3.5 h-3.5 text-purple-400" />
               IA Triagem (Laya)
-              <span className="px-1.5 py-0.2 text-[9px] font-bold rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">
-                MCP
-              </span>
             </button>
           </nav>
 

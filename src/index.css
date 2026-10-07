@@ -6,36 +6,31 @@
    ========================================================================== */
 
 :root {
-  /* Surface & Backgrounds */
-  --bg-primary: #05060a;
-  --bg-surface: #0b0d14;
-  --bg-surface-elevated: #111420;
-  --bg-card: rgba(14, 17, 28, 0.75);
-  --bg-card-hover: rgba(20, 24, 38, 0.85);
-  --bg-input: rgba(17, 21, 35, 0.6);
-  --bg-glass: rgba(15, 23, 42, 0.45);
-  --bg-dark-blur: rgba(5, 6, 10, 0.85);
+  /* Surface & Backgrounds - Clean Matte Palette */
+  --bg-primary: #090a0f;
+  --bg-surface: #0d0f17;
+  --bg-surface-elevated: #121520;
+  --bg-card: rgba(14, 17, 26, 0.85);
+  --bg-card-hover: rgba(20, 24, 36, 0.95);
+  --bg-input: rgba(18, 22, 34, 0.7);
+  --bg-glass: rgba(14, 17, 26, 0.75);
 
-  /* Borders & Dividers */
-  --border: rgba(255, 255, 255, 0.08);
-  --border-light: rgba(255, 255, 255, 0.14);
+  /* Borders & Dividers - Hairline Subtle */
+  --border: rgba(255, 255, 255, 0.07);
+  --border-light: rgba(255, 255, 255, 0.12);
   --border-focus: #6366f1;
-  --border-accent: rgba(99, 102, 241, 0.35);
+  --border-accent: rgba(99, 102, 241, 0.3);
 
   /* Accent & Core Brand */
   --accent: #6366f1;
   --accent-light: #818cf8;
   --accent-cyan: #06b6d4;
-  --accent-glow: rgba(99, 102, 241, 0.25);
-  --accent-cyan-glow: rgba(6, 182, 212, 0.25);
+  --accent-glow: rgba(99, 102, 241, 0.12);
 
   /* Status Colors */
   --status-healthy: #10b981;
-  --status-healthy-glow: rgba(16, 185, 129, 0.25);
   --status-warning: #f59e0b;
-  --status-warning-glow: rgba(245, 158, 11, 0.25);
   --status-critical: #ef4444;
-  --status-critical-glow: rgba(239, 68, 68, 0.3);
   --status-info: #3b82f6;
 
   /* Typography Colors */
@@ -44,13 +39,6 @@
   --text-dim: #64748b;
   --text-code: #38bdf8;
 
-  /* Gradients */
-  --grad-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
-  --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
-  --grad-card-glow: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
-  --grad-critical: linear-gradient(135deg, #ef4444 0%, #f43f5e 100%);
-  --grad-amber: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-
   /* Typography Families */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-heading: 'Syne', var(--font-sans);
@@ -58,13 +46,10 @@
 
   /* Radii & Effects */
   --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --glass: blur(16px) saturate(190%);
-  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05);
-  --shadow-glow: 0 0 35px var(--accent-glow);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 }
 
 * {
@@ -76,9 +61,8 @@
 body {
   background-color: var(--bg-primary);
   background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15), transparent),
-    radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.08), transparent 40%),
-    linear-gradient(to bottom, #05060a, #070912);
+    radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.06), transparent 50%),
+    linear-gradient(to bottom, #090a0f, #0c0e15);
   color: var(--text-main);
   font-family: var(--font-sans);
   font-size: 14px;
@@ -91,55 +75,45 @@ body {
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.5);
+  background: rgba(99, 102, 241, 0.4);
 }
 
 /* Base Headings */
 h1, h2, h3, h4, h5 {
   font-family: var(--font-heading);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   font-weight: 700;
   color: var(--text-main);
 }
 
-/* Utility Animations & Effects */
+/* Clean Panel - Subdued, Crisp, Distraction-Free */
 .glass-panel {
   background: var(--bg-card);
-  backdrop-filter: var(--glass);
-  -webkit-backdrop-filter: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.glass-panel::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-  pointer-events: none;
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .hover-glow:hover {
-  border-color: var(--border-accent);
-  box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.6), 0 0 24px var(--accent-glow);
+  border-color: rgba(99, 102, 241, 0.35);
 }
 
 .hover-lift {
