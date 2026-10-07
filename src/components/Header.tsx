@@ -8,7 +8,8 @@ import {
   Globe, 
   Terminal, 
   Play,
-  Pause
+  Pause,
+  Bot
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -18,8 +19,8 @@ interface HeaderProps {
   onOpenLinkedInModal: () => void;
   onTriggerChaosSim: () => void;
   activeIncidentsCount: number;
-  activeTab: 'dashboard' | 'topology' | 'logs' | 'incidents';
-  setActiveTab: (tab: 'dashboard' | 'topology' | 'logs' | 'incidents') => void;
+  activeTab: 'dashboard' | 'topology' | 'logs' | 'incidents' | 'laya';
+  setActiveTab: (tab: 'dashboard' | 'topology' | 'logs' | 'incidents' | 'laya') => void;
 }
 
 export const Header: FC<HeaderProps> = ({
@@ -50,7 +51,7 @@ export const Header: FC<HeaderProps> = ({
                   Pulse<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Ops</span>
                 </span>
                 <span className="px-2 py-0.5 text-[10px] font-semibold tracking-wider uppercase rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
-                  v2.4 Core
+                  v2.5 AIOps
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 hidden sm:block">
@@ -81,7 +82,7 @@ export const Header: FC<HeaderProps> = ({
               }`}
             >
               <Globe className="w-3.5 h-3.5 text-cyan-400" />
-              Topologia de Serviços
+              Topologia
             </button>
             <button
               onClick={() => setActiveTab('logs')}
@@ -109,6 +110,22 @@ export const Header: FC<HeaderProps> = ({
                   {activeIncidentsCount}
                 </span>
               )}
+            </button>
+
+            {/* Nova Aba de Triagem IA Laya */}
+            <button
+              onClick={() => setActiveTab('laya')}
+              className={`relative flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                activeTab === 'laya'
+                  ? 'bg-purple-600/30 text-purple-200 border border-purple-500/50 shadow-md shadow-purple-500/20'
+                  : 'text-purple-300/80 hover:text-purple-100 hover:bg-purple-500/10'
+              }`}
+            >
+              <Bot className="w-3.5 h-3.5 text-purple-400 animate-pulse" />
+              IA Triagem (Laya)
+              <span className="px-1.5 py-0.2 text-[9px] font-bold rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                MCP
+              </span>
             </button>
           </nav>
 

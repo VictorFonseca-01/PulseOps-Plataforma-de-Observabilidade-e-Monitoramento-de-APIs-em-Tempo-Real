@@ -3,6 +3,7 @@
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-8.x-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![AIOps MCP](https://img.shields.io/badge/AIOps-Laya_MCP-8B5CF6?logo=openai&logoColor=white)](https://modelcontextprotocol.io/)
 [![Status](https://img.shields.io/badge/Status-Production--Ready-emerald)](https://github.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -40,6 +41,12 @@
 - Diagnóstico automático de causa raiz, plano de mitigação e impacto no SLA.
 - Fluxo de ciclo de vida de incidentes: **Investigando ➔ Identificado (ACK) ➔ Em Monitoramento ➔ Resolvido**.
 - Exportação instantânea de relatório de **Post-Mortem em Markdown**.
+
+### 7. 🤖 AIOps & Triagem Determinística via Laya MCP (Model Context Protocol)
+- Elimina a fadiga de alertas em ambientes de alta vazão executando decisões de **Sistema-1** em menos de **35ms**.
+- **Zero Alucinações:** Retorna decisões estritamente tipadas com probabilidade calibrada de confiança (`calibrated confidence`).
+- Classificação automática de categoria de anomalia, portão de urgência de SLA (`is_urgent`), score de severidade (0 a 3) e predição de risco de outage.
+- Geração instantânea de comando de mitigação e playbook de remediação para Kubernetes/Envoy/PostgreSQL.
 
 ---
 

@@ -8,19 +8,22 @@ import {
   Trash2, 
   Download, 
   ChevronDown,
-  ChevronRight
+  ChevronRight,
+  Bot
 } from 'lucide-react';
 
 interface LiveLogStreamProps {
   logs: LogEntry[];
   onClearLogs: () => void;
   isStreaming: boolean;
+  onNavigateToLaya?: () => void;
 }
 
 export const LiveLogStream: FC<LiveLogStreamProps> = ({
   logs,
   onClearLogs,
   isStreaming,
+  onNavigateToLaya,
 }) => {
   const [search, setSearch] = useState('');
   const [selectedLevel, setSelectedLevel] = useState<string>('ALL');
@@ -212,6 +215,18 @@ export const LiveLogStream: FC<LiveLogStreamProps> = ({
                     <pre className="bg-black/60 p-2.5 rounded border border-white/5 text-cyan-300 overflow-x-auto">
                       {JSON.stringify(log.payload, null, 2)}
                     </pre>
+
+                    {onNavigateToLaya && (
+                      <div className="mt-2 flex justify-end">
+                        <button
+                          onClick={onNavigateToLaya}
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-500/40 text-[11px] font-bold transition-all shadow-sm"
+                        >
+                          <Bot className="w-3 h-3 text-purple-400" />
+                          Triar Evento com Laya MCP (~33ms)
+                        </button>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

@@ -8,19 +8,22 @@ import {
   Copy, 
   Check,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Bot
 } from 'lucide-react';
 
 interface IncidentAlertsProps {
   incidents: Incident[];
   onUpdateIncidentStatus: (id: string, status: IncidentStatus) => void;
   onTriggerChaosSim: () => void;
+  onNavigateToLaya?: () => void;
 }
 
 export const IncidentAlerts: FC<IncidentAlertsProps> = ({
   incidents,
   onUpdateIncidentStatus,
   onTriggerChaosSim,
+  onNavigateToLaya,
 }) => {
   const [expandedId, setExpandedId] = useState<string | null>(incidents[0]?.id || null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -199,6 +202,15 @@ ${inc.impact}
                         <span className="text-xs text-emerald-400 font-mono flex items-center gap-1">
                           <CheckCircle className="w-3.5 h-3.5" /> Incidente mitigado e encerrado
                         </span>
+                      )}
+                      {onNavigateToLaya && (
+                        <button
+                          onClick={onNavigateToLaya}
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40 hover:bg-purple-500/30 hover:scale-[1.02] transition-all shadow-md shadow-purple-500/10"
+                        >
+                          <Bot className="w-3.5 h-3.5 text-purple-400" />
+                          Triagem Laya MCP (~33ms)
+                        </button>
                       )}
                     </div>
 

@@ -57,6 +57,85 @@ export const ServiceTopology: FC<ServiceTopologyProps> = ({ nodes }) => {
         </div>
       </div>
 
+      {/* Visual Mesh Architecture Flow (SVG) */}
+      <div className="mb-6 bg-black/50 border border-white/10 rounded-2xl p-4 overflow-x-auto">
+        <div className="min-w-[700px]">
+          <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2 px-2">
+            <span>EDGE LAYER</span>
+            <span>INGRESS / GATEWAY</span>
+            <span>CORE SERVICES</span>
+            <span>DATA & CACHE</span>
+          </div>
+
+          <svg viewBox="0 0 800 120" className="w-full h-24 select-none">
+            <defs>
+              <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#06b6d4" />
+                <stop offset="50%" stopColor="#6366f1" />
+                <stop offset="100%" stopColor="#a855f7" />
+              </linearGradient>
+              <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            {/* Connecting paths with animated dash offset */}
+            <path d="M 100 60 L 260 60" stroke="#6366f1" strokeWidth="2" strokeDasharray="4 4" className="animate-[dash_1s_linear_infinite]" opacity="0.6" />
+            <path d="M 320 60 L 460 30" stroke="#6366f1" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
+            <path d="M 320 60 L 460 50" stroke="#6366f1" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
+            <path d="M 320 60 L 460 70" stroke="#6366f1" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
+            <path d="M 320 60 L 460 90" stroke="#6366f1" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
+
+            <path d="M 520 30 L 680 40" stroke="#10b981" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.4" />
+            <path d="M 520 50 L 680 80" stroke="#10b981" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.4" />
+            <path d="M 520 70 L 680 100" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.4" />
+            <path d="M 520 90 L 680 40" stroke="#10b981" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.4" />
+
+            {/* Nodes */}
+            {/* Edge */}
+            <g transform="translate(60, 42)" className="cursor-pointer" onClick={() => setSelectedNodeId('node-edge')}>
+              <rect width="80" height="36" rx="8" fill="#0b1120" stroke="#06b6d4" strokeWidth="1.5" />
+              <text x="40" y="22" fill="#e2e8f0" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">Edge CDN</text>
+            </g>
+
+            {/* Gateway */}
+            <g transform="translate(250, 42)" className="cursor-pointer" onClick={() => setSelectedNodeId('node-gateway')}>
+              <rect width="90" height="36" rx="8" fill="#111827" stroke="#6366f1" strokeWidth="2" filter="url(#neonGlow)" />
+              <text x="45" y="22" fill="#ffffff" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">Envoy GW</text>
+            </g>
+
+            {/* Services cluster */}
+            <g transform="translate(450, 15)" className="cursor-pointer" onClick={() => setSelectedNodeId('node-auth')}>
+              <rect width="80" height="24" rx="6" fill="#0f172a" stroke="#818cf8" strokeWidth="1" />
+              <text x="40" y="16" fill="#cbd5e1" fontSize="9" textAnchor="middle">Auth Svc</text>
+            </g>
+            <g transform="translate(450, 43)" className="cursor-pointer" onClick={() => setSelectedNodeId('node-billing')}>
+              <rect width="80" height="24" rx="6" fill="#0f172a" stroke="#818cf8" strokeWidth="1" />
+              <text x="40" y="16" fill="#cbd5e1" fontSize="9" textAnchor="middle">Billing</text>
+            </g>
+            <g transform="translate(450, 71)" className="cursor-pointer" onClick={() => setSelectedNodeId('node-ai')}>
+              <rect width="80" height="24" rx="6" fill="#0f172a" stroke="#f59e0b" strokeWidth="1.5" />
+              <text x="40" y="16" fill="#fcd34d" fontSize="9" textAnchor="middle">AI Engine</text>
+            </g>
+
+            {/* Data Layer */}
+            <g transform="translate(660, 25)" className="cursor-pointer" onClick={() => setSelectedNodeId('node-redis')}>
+              <rect width="80" height="24" rx="6" fill="#0b1329" stroke="#10b981" strokeWidth="1" />
+              <text x="40" y="16" fill="#a7f3d0" fontSize="9" textAnchor="middle">Redis Cache</text>
+            </g>
+            <g transform="translate(660, 55)" className="cursor-pointer" onClick={() => setSelectedNodeId('node-postgres')}>
+              <rect width="80" height="24" rx="6" fill="#0b1329" stroke="#10b981" strokeWidth="1" />
+              <text x="40" y="16" fill="#a7f3d0" fontSize="9" textAnchor="middle">Postgres HA</text>
+            </g>
+            <g transform="translate(660, 85)" className="cursor-pointer" onClick={() => setSelectedNodeId('node-kafka')}>
+              <rect width="80" height="24" rx="6" fill="#0b1329" stroke="#a855f7" strokeWidth="1" />
+              <text x="40" y="16" fill="#e9d5ff" fontSize="9" textAnchor="middle">Kafka Bus</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Left 2 Cols: Interactive Service Mesh Grid */}

@@ -53,6 +53,34 @@ export interface LogEntry {
   payload?: Record<string, unknown>;
 }
 
+export interface LayaTriageResult {
+  model: string;
+  latencyMs: number;
+  intent: {
+    category: string;
+    confidence: number;
+    probabilities: Record<string, number>;
+  };
+  isUrgent: {
+    value: boolean;
+    confidence: number;
+  };
+  severityScore: {
+    score: number;
+    level: 'Baixo' | 'Moderado' | 'Alto' | 'Crítico';
+    confidence: number;
+  };
+  outageRisk: {
+    isHighRisk: boolean;
+    confidence: number;
+  };
+  recommendedAction: string;
+  routing: {
+    model: string;
+    reason: string;
+  };
+}
+
 export interface Incident {
   id: string;
   title: string;
@@ -65,6 +93,7 @@ export interface Incident {
   rootCause: string;
   mitigation: string;
   impact: string;
+  layaTriage?: LayaTriageResult;
 }
 
 export interface ServiceNode {

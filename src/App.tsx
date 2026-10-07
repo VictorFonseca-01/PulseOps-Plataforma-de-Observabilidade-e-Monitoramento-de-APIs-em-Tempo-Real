@@ -9,6 +9,7 @@ import { IncidentAlerts } from './components/IncidentAlerts';
 import { SyntheticProbeModal } from './components/SyntheticProbeModal';
 import { LinkedInShowcaseModal } from './components/LinkedInShowcaseModal';
 import { SystemHealthBanner } from './components/SystemHealthBanner';
+import { LayaAITriageView } from './components/LayaAITriageView';
 
 import { 
   initialSystemMetrics, 
@@ -38,7 +39,7 @@ export function App() {
   const [nodes, setNodes] = useState<ServiceNode[]>(serviceTopologyData);
 
   const [isStreaming, setIsStreaming] = useState(true);
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'topology' | 'logs' | 'incidents'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'topology' | 'logs' | 'incidents' | 'laya'>('dashboard');
   const [isSyntheticProbeOpen, setIsSyntheticProbeOpen] = useState(false);
   const [isLinkedInModalOpen, setIsLinkedInModalOpen] = useState(false);
 
@@ -255,6 +256,7 @@ export function App() {
               logs={logs}
               onClearLogs={() => setLogs([])}
               isStreaming={isStreaming}
+              onNavigateToLaya={() => setActiveTab('laya')}
             />
           </div>
         )}
@@ -268,6 +270,7 @@ export function App() {
             logs={logs}
             onClearLogs={() => setLogs([])}
             isStreaming={isStreaming}
+            onNavigateToLaya={() => setActiveTab('laya')}
           />
         )}
 
@@ -276,6 +279,15 @@ export function App() {
             incidents={incidents}
             onUpdateIncidentStatus={handleUpdateIncidentStatus}
             onTriggerChaosSim={handleTriggerChaosSim}
+            onNavigateToLaya={() => setActiveTab('laya')}
+          />
+        )}
+
+        {activeTab === 'laya' && (
+          <LayaAITriageView
+            incidents={incidents}
+            onTriggerChaosSim={handleTriggerChaosSim}
+            onMitigateIncident={handleQuickMitigate}
           />
         )}
 

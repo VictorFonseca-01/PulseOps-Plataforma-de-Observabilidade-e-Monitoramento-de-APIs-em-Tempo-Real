@@ -59,7 +59,7 @@ export const SyntheticProbeModal: FC<SyntheticProbeModalProps> = ({ isOpen, onCl
         headers: headersObj,
         bodySnippet: text.slice(0, 1000),
       });
-    } catch (err: unknown) {
+    } catch {
       // Browser CORS or network failure simulation
       const fallbackDuration = Math.round(performance.now() - startTime);
       setResult({

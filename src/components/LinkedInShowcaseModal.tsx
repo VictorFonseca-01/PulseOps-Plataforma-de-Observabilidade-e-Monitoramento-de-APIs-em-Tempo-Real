@@ -4,7 +4,11 @@ import {
   Copy, 
   Check, 
   Sparkles, 
-  Award
+  Award,
+  Video,
+  HelpCircle,
+  FileText,
+  Share2
 } from 'lucide-react';
 
 interface LinkedInShowcaseModalProps {
@@ -13,56 +17,97 @@ interface LinkedInShowcaseModalProps {
 }
 
 export const LinkedInShowcaseModal: FC<LinkedInShowcaseModalProps> = ({ isOpen, onClose }) => {
-  const [activeTab, setActiveTab] = useState<'linkedin' | 'readme'>('linkedin');
-  const [copiedLinkedIn, setCopiedLinkedIn] = useState(false);
-  const [copiedReadme, setCopiedReadme] = useState(false);
+  const [activeTab, setActiveTab] = useState<'linkedin' | 'interview' | 'video' | 'readme'>('linkedin');
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
-  const linkedInText = `🚀 Apresento o PulseOps | Plataforma de Observabilidade e Monitoramento de APIs em Tempo Real!
+  const linkedInPostText = `🚀 Apresento o PulseOps — Plataforma de Observabilidade e AIOps em Tempo Real para Sistemas Distribuídos!
 
-Construí este projeto focado em resolver um dos maiores desafios em sistemas distribuídos de alta escala: visibilidade completa de latência, saúde de contratos de API e gestão proativa de incidentes.
+Em ambientes distribuídos de alta escala, o maior pesadelo de engenharia não é a queda do sistema — é a degradação silenciosa (cauda longa de latência) e a fadiga de alertas que atrasa o MTTR (Mean Time to Resolution).
 
-Principais capacidades de engenharia implementadas:
-🔹 Telemetria Percentil (p50, p95, p99): Gráficos dinâmicos em SVG renderizando séries temporais com streaming contínuo.
-🔹 Monitoramento de Endpoints & SLA: Acompanhamento de disponibilidade (99.9% target) e consumo do Error Budget.
-🔹 Sonda Sintética Ativa: Mecanismo de health check com medição real de Time to First Byte (TTFB) e inspeção de payloads.
-🔹 Console de Logs & Tracing Distribuído: Ingestão de logs com níveis de severidade, busca contextual e rastreamento por Trace ID.
-🔹 Topologia de Serviços: Visualização da malha de microsserviços (Gateways, Bancos, Cache e Filas) com mapeamento de dependências.
-🔹 Engenharia do Caos & Incidentes: Simulador de degradação P1/P2 com fluxo completo de triagem, mitigação e exportação de Post-Mortem.
+Para demonstrar na prática soluções modernas de Observabilidade e SRE, construí o PulseOps: uma plataforma completa de monitoramento e triagem proativa.
 
-🛠️ Stack Tecnológica:
-- React + TypeScript (Strict Mode)
-- Vite + Tailwind/Custom Design Tokens
-- Visualização de Dados Reativa (SVG puro com 60 FPS)
-- Arquitetura Modular & Clean Code
+Principais pilares técnicos implementados:
+⚡ Telemetria Percentil (p50, p95, p99): Streaming contínuo a 60 FPS com renderização matemática em curvas SVG puras, isolando a cauda de latência que as médias tradicionais mascaram.
+🛡️ Monitoramento de Contratos de SLA & Error Budget: Rastreamento dinâmico de disponibilidade de 99.9% e consumo do orçamento de erro em tempo real.
+🤖 AIOps & Triagem Inteligente via Laya MCP (Model Context Protocol): Sistema de decisão de Sistema-1 (~31ms) que classifica anomalias sem alucinações, com score calibrado de severidade e playbooks de mitigação instantâneos.
+🌐 Topologia & Malha de Microsserviços: Mapeamento de dependências upstream/downstream (Cloudflare Edge -> Envoy Gateway -> Services -> PostgreSQL / Redis / Kafka).
+📜 Live Logs & Distributed Tracing: Ingestão de telemetria com correlação por Trace ID e inspeção de payloads estruturados.
+🔥 Engenharia do Caos & Incident Response: Simulador de cascata de falhas (P1 Envoy Gateway 504) com exportação instantânea de relatório de Post-Mortem.
 
-Confira o código-fonte completo no GitHub e teste a demonstração interativa:
+🛠️ Stack:
+• Frontend: React 19 + TypeScript (Strict Mode) + Vite
+• Arquitetura: Clean Component Hierarchy, Custom Design System Tokens, Cyber Glassmorphism
+• AIOps / MCP: Integração com Laya Decision Engine (Typed Decisions locais de sub-35ms)
+• Data Viz: SVG reativo de alta precisão
+
+Confira o código-fonte e teste a demonstração interativa:
 👉 GitHub: https://github.com/VictorFonseca-01/PulseOps-Plataforma-de-Observabilidade-e-Monitoramento-de-APIs-em-Tempo-Real
 
-Feedback de engenheiros de software, SREs e tech leads são super bem-vindos! 💬
+O que achou da arquitetura? Feedback de Engenheiros de Software, Tech Leads e SREs é muito bem-vindo! 💬
 
-#reactjs #typescript #observability #softwareengineering #sre #frontend #devops #webdevelopment #portfolio`;
+#SoftwareEngineering #SRE #Observability #React #TypeScript #DevOps #SystemDesign #MCP #WebDevelopment #Portfolio`;
 
-  const readmeSnippet = `# ⚡ PulseOps — Plataforma de Observabilidade e Monitoramento de APIs em Tempo Real
+  const interviewTalkingPoints = `🎯 GUIA DE ENTREVISTA TÉCNICA — COMO VENDER ESSE PROJETO:
 
-[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-8.x-646CFF?logo=vite)](https://vitejs.dev/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+1. PITCH DE ELEVADOR (30 segundos):
+"O PulseOps é uma plataforma de observabilidade e AIOps em tempo real voltada para microsserviços. Ele resolve dois problemas clássicos de SRE: a cauda longa de latência que as médias mascaram, monitorando percentis p50, p95 e p99, e a fadiga de alertas, utilizando o Laya MCP para realizar triagem de incidentes em ~31ms com decisões tipadas sem alucinações."
 
-> Uma plataforma moderna e reativa para observabilidade de sistemas distribuídos, monitoramento de APIs, análise percentil de latência e gestão proativa de incidentes (SRE).
+2. POR QUE USAR PERCENTIS (p95/p99) EM VEZ DE LATÊNCIA MÉDIA?
+"Em 100 mil requisições, se 99 mil demoram 20ms e 1 mil demoram 10 segundos, a média diz 120ms (parece aceitável), mas 1% dos clientes premium estão tendo uma experiência péssima de 10s. O p99 captura exatamente essa cauda longa de lentidão."
 
-## 🚀 Funcionalidades
+3. O QUE É O ERROR BUDGET E O SLA DE 99.9%?
+"Um SLA de 99.9% (três noves) permite apenas 43.8 minutos de indisponibilidade por mês. O Error Budget é o saldo restante desse tempo. Se o budget está esgotando rápido, o time congela novos deploys e foca 100% em confiabilidade."
 
-- **Métricas Globais de SLA:** Cálculo de uptime, disponibilidade e rastreamento de Error Budget.
-- **Gráfico de Latência Percentil:** Curvas interativas de p50 (mediana), p95 e p99 em tempo real.
-- **Sonda Sintética de HTTP:** Teste de endpoints com cálculo de TTFB (Time to First Byte).
-- **Streaming de Logs com Trace IDs:** Terminal distribuído com filtros por severidade e payload inspect.
-- **Malha de Serviços (Topology Map):** Mapeamento de dependências inter-serviços (Gateways, DB, Cache, Filas).
-- **Chaos Engineering & Post-Mortems:** Simulação de incidentes P1 e geração automática de relatórios.
+4. COMO O MCP DA LAYA ENTRA NA ARQUITETURA?
+"Modelos generativos tradicionais demoram 2 a 5 segundos e geram texto livre propenso a alucinar. O Laya MCP funciona como um motor de Sistema-1: executa em ~31ms locais, responde com formato estritamente tipado (choice, score de severidade, flag de urgência) e fornece um score de confiança probabilístico calibrado para acionar auto-scaling e circuit breakers com segurança."`;
 
-## 💻 Como Rodar Localmente
+  const videoScript = `🎬 ROTEIRO DE VÍDEO DEMONSTRATIVO PARA O LINKEDIN (DURAÇÃO: 30 SEGUNDOS):
+
+[00:00 - 00:08] ABERTURA & DASHBOARD
+• Ação: Abra o dashboard do PulseOps com o Live Streaming ativo.
+• Narração/Legenda: "Construí o PulseOps: plataforma de observabilidade em tempo real com streaming de telemetria de latência p50, p95 e p99."
+
+[00:08 - 00:16] INJEÇÃO DE CAOS (O MOMENTO 'WOW')
+• Ação: Clique no botão "Injetar Simulação de Incidente (Chaos Engineering)".
+• Efeito: As métricas de p99 sobem para 460ms, o banner vermelho de alerta pulsa e logs críticos aparecem instantaneamente.
+• Narração/Legenda: "Simulando uma falha P1 no Gateway Envoy com saturação de thread pool..."
+
+[00:16 - 00:24] TRIAGEM INTELIGENTE COM LAYA MCP
+• Ação: Vá na aba "IA Triagem (Laya)" e clique em "Disparar Triagem com Laya MCP".
+• Efeito: Mostra o Laya resolvendo a anomalia em 31ms, diagnosticando a causa raiz e gerando o comando de auto-remediação.
+• Narração/Legenda: "AIOps via Laya MCP: triagem determinística em sub-35ms sem alucinações."
+
+[00:24 - 00:30] TOPOLOGIA & ENCERRAMENTO
+• Ação: Passe rápido pela aba "Topologia de Serviços" mostrando a malha de microsserviços.
+• Narração/Legenda: "Código 100% aberto no GitHub com React 19 e TypeScript! Link nos comentários."`;
+
+  const readmeMarkdown = `# ⚡ PulseOps — Plataforma de Observabilidade e AIOps em Tempo Real
+
+[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-8.x-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![MCP](https://img.shields.io/badge/MCP-Laya_Engine-8B5CF6)](https://modelcontextprotocol.io/)
+[![Status](https://img.shields.io/badge/Status-Production--Ready-emerald)](https://github.com/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+> Plataforma enterprise de alta performance para observabilidade de microsserviços, telemetria percentil de latência (p50, p95, p99), monitoramento de SLA e triagem preditiva de incidentes (AIOps) com **Laya MCP**.
+
+---
+
+## 🎯 Capacidades de Engenharia
+
+1. **📊 Telemetria Percentil em SVG puro:** Curvas de latência em tempo real a 60 FPS (p50, p95, p99) para isolamento da cauda longa.
+2. **🤖 AIOps & Triagem Determinística (Laya MCP):** Tomada de decisão em ~31ms locais sem alucinações com cálculo de confiança calibrada.
+3. **🛡️ Gestão de SLA & Error Budget:** Acompanhamento de metas de 99.9% de uptime e cálculo de burn rate do orçamento de erro.
+4. **🌐 Malha de Topologia de Serviços:** Mapeamento visual das dependências entre Cloudflare Edge, Gateways Envoy, Microsserviços e Bancos de Dados.
+5. **📜 Live Distributed Log Streaming:** Logs correlacionados por Trace ID com inspeção detalhada de payloads JSON.
+6. **🔥 Chaos Engineering:** Simulador integrado de cascata de falhas P1 com geração automática de Post-Mortem em Markdown.
+
+---
+
+## 🚀 Como Executar Localmente
 
 \`\`\`bash
 # 1. Clone o repositório
@@ -74,26 +119,22 @@ cd PulseOps-Plataforma-de-Observabilidade-e-Monitoramento-de-APIs-em-Tempo-Real
 # 3. Instale as dependências
 npm install
 
-# 4. Inicie o servidor de desenvolvimento
+# 4. Inicie o servidor
 npm run dev
 \`\`\`
+
+Acesse no navegador: \`http://localhost:5173\`
 `;
 
-  const handleCopyLinkedIn = () => {
-    navigator.clipboard.writeText(linkedInText);
-    setCopiedLinkedIn(true);
-    setTimeout(() => setCopiedLinkedIn(false), 2000);
-  };
-
-  const handleCopyReadme = () => {
-    navigator.clipboard.writeText(readmeSnippet);
-    setCopiedReadme(true);
-    setTimeout(() => setCopiedReadme(false), 2000);
+  const handleCopy = (text: string, key: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedKey(key);
+    setTimeout(() => setCopiedKey(null), 2000);
   };
 
   return (
     <div className="modal-overlay">
-      <div className="glass-panel modal-content w-full max-w-3xl p-6 bg-[#0b0e1a]/95 border-white/10 shadow-2xl">
+      <div className="glass-panel modal-content w-full max-w-4xl p-6 bg-[#0b0e1a]/95 border-white/10 shadow-2xl">
         
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-white/10">
@@ -102,9 +143,11 @@ npm run dev
               <Sparkles className="w-5 h-5 text-indigo-400" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">Kit de Destaque para LinkedIn & GitHub</h3>
+              <h3 className="text-base font-bold text-white font-['Syne']">
+                Kit de Destaque Profissional (LinkedIn & Entrevistas)
+              </h3>
               <p className="text-xs text-slate-400">
-                Textos estruturados e badges prontas para você publicar e alavancar o seu perfil profissional
+                Textos validados, scripts de vídeo e cheatsheet técnico para alavancar seu perfil para Tech Leads e Recrutadores
               </p>
             </div>
           </div>
@@ -118,7 +161,7 @@ npm run dev
         </div>
 
         {/* Tab selection */}
-        <div className="flex items-center gap-2 mt-4 mb-3 border-b border-white/5 pb-2">
+        <div className="flex flex-wrap items-center gap-2 mt-4 mb-4 border-b border-white/5 pb-2">
           <button
             onClick={() => setActiveTab('linkedin')}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
@@ -127,10 +170,32 @@ npm run dev
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            <svg className="w-4 h-4 fill-[#0077b5]" viewBox="0 0 24 24">
-              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.8v8.37h-2.8v-8.37M7.86 6.55a1.63 1.63 0 0 0-1.63 1.63 1.63 1.63 0 0 0 1.63 1.63 1.63 1.63 0 0 0 1.63-1.63c0-.9-.73-1.63-1.63-1.63Z" />
-            </svg>
+            <Share2 className="w-3.5 h-3.5 text-[#0077b5]" />
             Post Formatado para LinkedIn
+          </button>
+
+          <button
+            onClick={() => setActiveTab('interview')}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              activeTab === 'interview'
+                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <HelpCircle className="w-3.5 h-3.5 text-emerald-400" />
+            Perguntas & Respostas de Entrevista
+          </button>
+
+          <button
+            onClick={() => setActiveTab('video')}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              activeTab === 'video'
+                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Video className="w-3.5 h-3.5 text-amber-400" />
+            Roteiro de Vídeo (30s)
           </button>
 
           <button
@@ -141,57 +206,105 @@ npm run dev
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            <svg className="w-4 h-4 fill-purple-400" viewBox="0 0 24 24">
-              <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z" />
-            </svg>
-            README.md para o Repositório Git
+            <FileText className="w-3.5 h-3.5 text-purple-400" />
+            README.md com Laya MCP
           </button>
         </div>
 
-        {/* Content Tab 1: LinkedIn */}
+        {/* Tab 1: LinkedIn Post */}
         {activeTab === 'linkedin' && (
           <div className="space-y-3">
             <div className="p-3 bg-indigo-500/5 rounded-xl border border-indigo-500/20 text-xs text-indigo-300 flex items-start gap-2">
               <Award className="w-4 h-4 shrink-0 text-indigo-400 mt-0.5" />
               <span>
-                <strong>Dica de Ouro para o LinkedIn:</strong> Grave um vídeo curto (15 a 30s) ou GIF mostrando o gráfico de latência em tempo real e o botão de "Simular Caos (P1)" acionando alertas vermelhos. Isso multiplica as visualizações e engajamento dos recrutadores!
+                <strong>Por que este post funciona:</strong> Ele foca na dor real dos líderes de engenharia (degradação oculta de latência e fadiga de alertas), lista conceitos sênior (p99, Error Budget, Chaos Engineering, Laya MCP) e convida para a interação.
               </span>
             </div>
 
             <div className="relative">
               <textarea
                 readOnly
-                value={linkedInText}
-                rows={12}
+                value={linkedInPostText}
+                rows={13}
                 className="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-xs text-slate-300 font-sans focus:outline-none resize-none leading-relaxed"
               />
               <button
-                onClick={handleCopyLinkedIn}
+                onClick={() => handleCopy(linkedInPostText, 'linkedin')}
                 className="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-md shadow-indigo-600/30"
               >
-                {copiedLinkedIn ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedLinkedIn ? 'Copiado!' : 'Copiar Texto'}</span>
+                {copiedKey === 'linkedin' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copiedKey === 'linkedin' ? 'Copiado!' : 'Copiar Texto do Post'}</span>
               </button>
             </div>
           </div>
         )}
 
-        {/* Content Tab 2: README */}
+        {/* Tab 2: Interview Prep */}
+        {activeTab === 'interview' && (
+          <div className="space-y-3">
+            <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-xs text-emerald-300">
+              💡 <strong>Como usar na entrevista:</strong> Quando o recrutador ou tech lead perguntar: <em>"Fale sobre um projeto técnico desafiador que você desenvolveu"</em>, use os pontos abaixo.
+            </div>
+
+            <div className="relative">
+              <textarea
+                readOnly
+                value={interviewTalkingPoints}
+                rows={13}
+                className="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-xs text-slate-300 font-sans focus:outline-none resize-none leading-relaxed"
+              />
+              <button
+                onClick={() => handleCopy(interviewTalkingPoints, 'interview')}
+                className="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-md shadow-emerald-600/30"
+              >
+                {copiedKey === 'interview' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copiedKey === 'interview' ? 'Copiado!' : 'Copiar Roteiro'}</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Tab 3: Video Script */}
+        {activeTab === 'video' && (
+          <div className="space-y-3">
+            <div className="p-3 bg-amber-500/5 rounded-xl border border-amber-500/20 text-xs text-amber-300">
+              🎥 <strong>Dica de Produção:</strong> Use ferramentas gratuitas como o <em>OBS Studio</em>, <em>Loom</em> ou até o gravador de tela do Windows (Win+Alt+R). Posts no LinkedIn com vídeo curto têm até <strong>5x mais impressões</strong> do que apenas texto!
+            </div>
+
+            <div className="relative">
+              <textarea
+                readOnly
+                value={videoScript}
+                rows={13}
+                className="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-xs text-slate-300 font-sans focus:outline-none resize-none leading-relaxed"
+              />
+              <button
+                onClick={() => handleCopy(videoScript, 'video')}
+                className="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold transition-all shadow-md shadow-amber-600/30"
+              >
+                {copiedKey === 'video' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copiedKey === 'video' ? 'Copiado!' : 'Copiar Roteiro de Vídeo'}</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Tab 4: README */}
         {activeTab === 'readme' && (
           <div className="space-y-3">
             <div className="relative">
               <textarea
                 readOnly
-                value={readmeSnippet}
-                rows={12}
+                value={readmeMarkdown}
+                rows={13}
                 className="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-xs text-cyan-300 font-mono focus:outline-none resize-none leading-relaxed"
               />
               <button
-                onClick={handleCopyReadme}
+                onClick={() => handleCopy(readmeMarkdown, 'readme')}
                 className="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold transition-all shadow-md shadow-purple-600/30"
               >
-                {copiedReadme ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedReadme ? 'Copiado!' : 'Copiar Markdown'}</span>
+                {copiedKey === 'readme' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copiedKey === 'readme' ? 'Copiado!' : 'Copiar README.md'}</span>
               </button>
             </div>
           </div>
